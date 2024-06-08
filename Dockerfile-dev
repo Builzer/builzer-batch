@@ -1,0 +1,11 @@
+FROM amazoncorretto:21-alpine
+
+WORKDIR /app
+
+ENV PROFILES=dev
+
+ARG ORIGINAL_JAR_FILE=./build/libs/batch-SNAPSHOT.jar
+
+COPY ${ORIGINAL_JAR_FILE} builzer-batch.jar
+
+CMD ["java", "-Dspring.profiles.active=${PROFILES}", "-jar", "/app/builzer-batch.jar"]
