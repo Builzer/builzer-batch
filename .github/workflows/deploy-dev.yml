@@ -102,6 +102,6 @@ jobs:
             docker pull ${{ env.DOCKERHUB_USERNAME }}/${{ env.DOCKERHUB_REPOSITORY }}:latest
             docker stop builzer-batch || true
             docker rm builzer-batch || true
-            docker run -d -p 8080:8080 --network builzer-network --name builzer-batch ${{ env.DOCKERHUB_USERNAME }}/${{ env.DOCKERHUB_REPOSITORY }}:latest' \
+            docker run -d -p 8081:8081 --network builzer-network --name builzer-batch ${{ env.DOCKERHUB_USERNAME }}/${{ env.DOCKERHUB_REPOSITORY }}:latest' \
             --comment "Deploying Docker container to EC2 via SSM" \
             --timeout-seconds 600
