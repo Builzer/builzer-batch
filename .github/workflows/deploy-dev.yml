@@ -97,7 +97,7 @@ jobs:
         run: |
           aws ssm send-command \
             --document-name "AWS-RunShellScript" \
-            --targets "Key=tag:Name,Values=BuilzerBatchApp-dev" \
+            --targets "Key=tag:Name,Values=BuilzerApp-dev" \
             --parameters 'commands=#!/bin/bash
             docker pull ${{ env.DOCKERHUB_USERNAME }}/${{ env.DOCKERHUB_REPOSITORY }}:latest
             docker stop builzer-batch || true
