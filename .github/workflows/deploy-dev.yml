@@ -106,10 +106,6 @@ jobs:
             docker run -d -p 8081:8081 --network builzer-network --name builzer-batch ${{ env.DOCKERHUB_USERNAME }}/${{ env.DOCKERHUB_REPOSITORY }}:latest' \
             --comment "Deploying Docker container to EC2 via SSM" \
             --timeout-seconds 600
-      - name: Send Successful deployment message to slack channel
-        run: |
-          curl -X POST --data-urlencode "payload={\"channel\": \"#배포-모니터링
-          \", \"username\": \"배포 완료 알림\", \"text\": \"[환경]: dev\n[모듈]: builzer-batch\"}" ${{ env.SLACK_DEPLOY_NOTIFICATION_URL }}
   success-notification:
     runs-on: ubuntu-latest
     needs: [ build, test, deploy ]
